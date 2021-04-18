@@ -10,6 +10,6 @@
 my_name = "Faruk"
 name = input("Please enter your name: ").title()
 if name == my_name:
-    print("Hello, {}! The password is : W@12frk".format(nameFAru))
+    print("Hello, {}! The password is : W@12frk".format(name))
 else:
     print("Hello, {}! See you later.".format(name))
