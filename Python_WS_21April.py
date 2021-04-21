@@ -55,7 +55,28 @@ print(sonuc)
 # where the width of each bar is 1, compute how much water will be trapped on terrain 
 # after raining. To clarify further, the black boxes represents terrain and its height, 
 # and the blue boxes represents the water that could be trapped on the terrain.
-list = []
+height = []
 while True:
-    list.append([ for i in input("Please enter the number that forms the terrain. When you are ok, type \
-        'ok' to stop entering number: ") if i == "ok" break])
+    num = input("Type 'ok' when you are done: ")
+    if num != "ok":
+        height.append(int(num))
+    else:
+        break
+areas = 0
+max_l = max_r = 0
+l = 0
+r = len(height)-1
+while l < r:
+    if height[l] < height[r]:
+        if height[l] > max_l:
+            max_l = height[l]
+        else:
+            areas += max_l - height[l]
+        l += 1
+    else:
+        if height[r] > max_r:
+            max_r = height[r]
+        else:
+            areas += max_r - height[r]
+        r -= 1
+print("\nRain-trapped area : ", areas)
