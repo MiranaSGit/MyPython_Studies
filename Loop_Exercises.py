@@ -308,3 +308,7 @@ for i in range(1, 10):
 #     for j in range(0, i - 1):
 #         print("*", end=' ')
 #     print("\r")
+
+
+for i in range(1, 10):
+    print(str(i) * i)
