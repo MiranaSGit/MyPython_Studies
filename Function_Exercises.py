@@ -113,3 +113,29 @@ def myFunc(a, b):
     print(list[::2])
 
 myFunc(4, 30)
+
+
+
+# Write a Python function that takes a list and returns a new list with unique 
+# elements of the first list.
+def fun(a):
+    myList = []
+    for i in a:
+        if i not in myList:
+            myList.append(i)
+    return myList
+print(fun([1, 2, 3, 3, 3, 3, 4, 5]))
+
+
+
+
+
+# Write a Python function that takes a number as a parameter and check the number 
+# is prime or not.
+def prime_no(x):
+    for i in range(2, x):
+        if not x % i:
+            return print(x, "is a not prime number.")
+    return print(x, "is a prime number.")
+
+prime_no(int(input("Input a number: ")))
