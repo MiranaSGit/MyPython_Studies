@@ -27,3 +27,29 @@ for i in numbers_list:
         if i not in newList:
             newList.append(i)
 print(newList)
+
+
+# For the numbers 1-50, write a code that gives "Fizz" if it can be divided by 3, "Buzz" by 5
+# and "FizzBuzz" both by 5 and 3.
+list = []
+for i in range(1,51):
+    # print(i)
+    if not i % 3 and not i % 5:
+        list.append("FizzBuzz")
+    elif not i % 3:
+        list.append("Buzz")
+    elif not i % 5:
+        list.append("Fizz")
+    else:
+        list.append(i)
+print(list)
+
+
+
+
+# Code which floats the given item to left or right based on the given index num.
+list = [0, 5, 16, 27, 32, 39, 42, 51]
+# newList = []
+index = int(input("Please provide an index num: "))
+newList = list[-(index):] + list[:-(index)]
+print(newList)
