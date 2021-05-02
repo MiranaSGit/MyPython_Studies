@@ -424,3 +424,36 @@ def organizer(**a):
     print("ages: ", [j for j in a.values()])
 
 organizer(Beth=26, Oscar=42, Justin=18, Frank=33)
+
+
+# İçerisine iki tane liste alan, listelerdeki rakamları tersten sayı şekline çevirip onları
+#  toplayan ve toplamın rakamlarını tersten listeleyen fonksiyon yazıcaz. Listeler boş olamaz.
+# Example 1:
+# Input: l1 = [2,4,3], l2 = [5,6,4]
+# Output: [7,0,8]
+# Explanation: 342 + 465 = 807.
+# Example 2:
+
+# Input: l1 = [0], l2 = [0]
+# Output: [0]
+# Example 3:
+
+# Input: l1 = [9,9,9,9,9,9,9], l2 = [9,9,9,9]
+# Output: [8,9,9,9,0,0,0,1]
+list1 = [5, 6, 7, 8, 0, 2]
+list2 = [3, 9, 1, 4, 4]
+
+def rev(a):
+    txt = [str(i) for i in a[::-1]]
+    num = int("".join(txt))
+    return num
+
+def listing(a):
+    txt = str(a)
+    list = [i for i in txt[::-1]]
+    return list
+
+out = (rev(list1) + rev(list2))
+listing(out)
+
+
