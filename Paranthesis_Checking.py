@@ -7,9 +7,6 @@
 # 2-Open brackets must be closed in the correct order.
 # Note that an empty string is also considered valid.
 
-
-
-
 def ofd(a):
     dict = {"(" : ")", "[" : "]", "{" : "}"}
     if len(a) == 0:
@@ -20,12 +17,9 @@ def ofd(a):
         flag = True
         while flag == True:
             for i in a:
-                print(a[r_index])
-                print(dict[i])
                 if a[r_index] == dict[i]:
                     l_index += 1
                     r_index -= 1
-                    print(l_index, r_index)
                     if l_index >= r_index:
                         flag = False
                         break
@@ -35,3 +29,21 @@ def ofd(a):
 
 t = "{}"
 ofd(t)
+
+
+
+# Alternative Solution
+def is_valid(s):
+  parantez = {"(": ")", "[": "]", "{": "}"}
+  open_par = set(["(", "[", "{"])
+  control_list = []
+  for i in s:
+    if i in open_par:
+      control_list.append(i)
+    elif control_list and i == parantez[control_list[-1]]:
+      control_list.pop()
+    else:
+      return False
+  return control_list == []
+
+is_valid('[]({}){')
