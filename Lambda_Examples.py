@@ -120,3 +120,12 @@ repeat_4_times = repeater(4)  # repeats 4 times
 print(repeat_2_times('alex '))
 print(repeat_3_times('lara '))
 print(repeat_4_times('linda '))
+
+
+
+for i in [1, 2, 3, 4]:
+    print(i, ":", (lambda x : "odd" if x%2 !=0 else "even")(i))
+
+
+hipotenus = lambda a, b : (a**2 + b**2) ** 0.5
+hipotenus(3, 4)

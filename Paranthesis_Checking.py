@@ -47,3 +47,11 @@ def is_valid(s):
   return control_list == []
 
 is_valid('[]({}){')
+
+
+# Alternative Solution2
+def query(s):
+    while "()" in s or "{}" in s or '[]' in s:
+        s = s.replace("()", "").replace('{}', "").replace('[]', "")
+    return s == ''
+print(query(('()]')))
