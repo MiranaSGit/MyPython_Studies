@@ -51,6 +51,6 @@ def prime_mı(a):
   return prime
 def gap(x,y,z):
   prime_list=[i for i in range(y,z+1) if prime_mı(i)]
-  # sonuc=[[prime_list[i],prime_list[k]] for i in range(len(prime_list)) for k in range(i+1,len(prime_list)) if prime_list[k]-prime_list[i]==x ]      
-  # return sonuc[0] if sonuc else None
+  sonuc=[[prime_list[i],prime_list[k]] for i in range(len(prime_list)) for k in range(i+1,len(prime_list)) if prime_list[k]-prime_list[i]==x ]      
+  return sonuc[0] if sonuc else None
 print(prime_list)
