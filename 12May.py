@@ -25,3 +25,13 @@ def pluralize(input):
 
 
 pluralize(["chair", "chair"])
+
+
+# Solution 2
+def pluralize(x):
+    repeat = [i + 's' for n, i in enumerate(x) if i in x[:n]]
+    notRepeat = [i for i in x if x.count(i) == 1]
+    return set(notRepeat + repeat)
+
+
+pluralize(["chair", "chair"])
