@@ -18,3 +18,16 @@ def navigate(l):
 
 
 navigate(["Kuzey", "Bati", "Guney", "Dogu"])
+
+
+# solution2:
+def yon(l):
+    s = {"Kuzey": "Guney", "Guney": "Kuzey", "Dogu": "Bati", "Bati": "Dogu"}
+    i = 0
+    while i < len(l)-1:
+        if s[l[i]] == l[i+1]:
+            del l[i:i+2]
+            i = 0
+        else:
+            i += 1
+    return l
