@@ -64,3 +64,25 @@ except (ValueError, TypeError):
 ....
 except ArithmeticError:
     print("I will also catch OverflowError, FloatingPointError and ZeroDivisionError")
+
+
+fruits = ["banana", "mango", "pear", "apple", "kiwi", "grape"]
+counter = 3
+while counter > 0:
+    try:
+        x = int(input("enter a number: "))
+        print(fruits[x])
+        break
+    except IndexError:
+        counter -= 1
+        print("Please enter a number between {} and {}. You have {}right left. Try again".format(
+            1, len(fruits), counter))
+    except ValueError:
+        counter -= 1
+        print("Enter a numeric value. You have",
+              counter, " right left. Try again")
+    else:
+        print("Congrats! You've entered a valid input.")
+        break
+    finally:
+        print("Our fruits are always fresh.")
