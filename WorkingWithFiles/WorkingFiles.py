@@ -83,18 +83,23 @@ with open("flowers.txt", "r") as ff:
     print(ff.read())
 
 ########################################################
-with open("flowers.txt", "w", encoding="utf-8") as file:
-    flowers = ['Jasmine\n', 'Rose\n', 'Lily\n', 'Daisy\n', 'Tulip\n']
-    file.writelines(flowers)
+fruits = ['Banana\n', 'Orange\n', 'Apple\n', 'Strawberry\n', 'Cherry\n']
 
-with open("flowers.txt", "r", encoding="utf-8") as file:
-    print(file.read())
+with open("fruits.txt", 'w', encoding="utf-8") as file:
+    # creates a file containing the elements of the list
+    file.writelines(fruits)
 
-with open("flowers.txt", "a", encoding="utf-8") as file:
-    file.write("\norchid")
+with open("fruits.txt", 'r', encoding="utf-8") as file:
+    print(file.read())  # reads the content of the file
 
-with open("flowers.txt", "r", encoding="utf-8") as file:
-    print(file.read())
+with open("fruits.txt", 'a', encoding="utf-8") as file:
+    file.write('Melon\n')  # adds "Melon" to the end of the existing file
+
+with open("fruits.txt", 'r', encoding="utf-8") as file:
+    print(file.read())  # reads the last content of the file
+
+with open("fruits.txt", 'r', encoding="utf-8") as file:
+    print(file.readlines())
 
 #########################################################
 with open("Istiklal_Marsi.txt", "r", encoding="utf-8") as ff:
