@@ -48,7 +48,7 @@ with open("TP_SMPE_SKU.csv", "r") as csv_file2:
 
 with open('new_file.csv', mode='w', newline="") as new_file:
     writer = csv.writer(new_file, delimiter=',')
-    writer.writerow(["Stock Level", "SKU", "Location"])
+    writer.writerow(["SKU", "Stock Level", "Location"])
     for i, j in myLW_Stock.items():
         writer.writerow([i, j, "MAIN_STOCK"])
 
