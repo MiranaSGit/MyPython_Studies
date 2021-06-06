@@ -26,6 +26,7 @@ print(average(3, 5))
 
 iterable = [1, 2, 3, 4, 5]
 map(lambda x: x**2, iterable)
+print(list(map(lambda x: x**2, (1, 3, 5))))
 result = map(lambda x: x**2, iterable)
 
 print(type(result))  # it's a map type
@@ -99,6 +100,10 @@ print(power_of_2(2))  # 2 to the power of 2
 print(power_of_3(2))  # 2 to the power of 3
 print(power_of_4(2))  # 2 to the power of 4
 
+print(modular_function(2)(2))
+print(modular_function(3)(2))
+print(modular_function(4)(2))
+
 
 def repeater(n):
     return lambda x: x * n
@@ -112,6 +117,9 @@ print(repeat_2_times('alex '))
 print(repeat_3_times('lara '))
 print(repeat_4_times('linda '))
 
+print(repeater(2)('alex '))
+print(repeater(2)('lara '))
+print(repeater(2)('linda '))
 
 for i in [1, 2, 3, 4]:
     print(i, ":", (lambda x: "odd" if x % 2 != 0 else "even")(i))
@@ -133,8 +141,8 @@ print(list(a))
 # Example
 w1 = ["you", "much", "hard"]
 w2 = ["i", "you", "you"]
-w3 = ["love", "ate", "works"]
-text = map(lambda x, y, z: y + " " + z + " " + x + " ", w1, w2, w3)
+w3 = ["love", "ate", "work"]
+text = map(lambda x, y, z: x + " " + y + " " + z + " ", w2, w3, w1)
 for i in (text):
     print(i)
 
@@ -183,6 +191,6 @@ ofd_bool = func_generator(bool)
 ofd_sorted = func_generator(sorted)
 
 print(ofd_print("Hello"))
-print(ofd_print([35, 75]))
+print(ofd_max([35, 75]))
 print(ofd_bool(35))
 print(ofd_sorted(["x", "c"]))
