@@ -1,3 +1,4 @@
+from csv import DictReader
 import csv  # loads csv module
 import os
 
@@ -27,3 +28,28 @@ with open(filename, 'r', newline='', encoding='utf-8') as file:
     # in the csv file as a value of delimiter
     for row in csv_rows:
         print(row)
+
+
+# With csv module’s DictReader class object we can iterate over the lines of a csv file as a dictionary i.e.
+# for each row a dictionary is returned, which contains the pair of column names and cell values for that row.
+# Let’s understand with an example,
+
+
+# from csv import DictReader
+# open file in read mode
+with open('students.csv', 'r') as read_obj:
+    # pass the file object to DictReader() to get the DictReader object
+    csv_dict_reader = DictReader(read_obj)
+    # iterate over each line as a ordered dictionary
+    for row in csv_dict_reader:
+        # row variable is a dictionary that represents a row in csv
+        print(row)
+
+
+with open('Mapping_OUT.csv', mode='w', newline="") as new_file:
+    writer = csv.writer(new_file, delimiter=',')
+    writer.writerow(["SKU_Shopify", "ALT_SKU"])
+    for i in listEbay:
+        for j in listShopify:
+            if str(i).endswith(str(j)):
+                writer.writerow([j, i])

@@ -1,24 +1,32 @@
-import ebaysdk
-from ebaysdk.shopping import Connection as shopping
+from ebaysdk.finding import Connection as finding
+from bs4 import BeautifulSoup
+# from ebayapi import ebayapi
+
 # from ebaysdk.exception import ConnectionError
-# import xlrd
+import xlrd
 # import time
 # import xlwt
-import urllib.request
 
-ItemID = 324392050021
+Store = 'transitpartcenter'
 
-api = shopping(
+api = finding(
     siteid='EBAY-GB', appid='omerfaru-miranas-PRD-8a5abeab0-cf6fe95c', config_file=None)
-MPN = 'Null'
-print(str(ItemID))
-response = api.execute('GetSingleItem', {
-    'ItemID': str(ItemID),
-    'IncludeSelector': 'ItemSpecifics'
-})
+api.request = {'storeName': Store, 'categoryId': '61513'}
+response = api.execute('findItemsIneBayStores', api.request)
+soup = BeautifulSoup(response.content, 'lxml')
 
-for item in response.dict()['Item']['PictureURL']:
-    urllib.request.urlretrieve(item, 'deneme.jpg')
+totalentries = int(soup.find('totalentries').text)
+items = soup.find_all('item')
+i = 0
+for item in items:
+    item_id = item.itemid
+    title = item.title
+    price = item.currentprice
+    i += 1
+    print(item_id)
+    print(title)
+    print(price)
+    print(i)
 # def ebay_query(ItemID):
 #     try:
 #         api = shopping(
