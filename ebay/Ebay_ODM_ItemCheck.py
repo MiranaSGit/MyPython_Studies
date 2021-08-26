@@ -9,16 +9,15 @@ listEBAY = []
 listODM = []
 
 for i in os.listdir("."):
-    if i.startswith("FileExchange"):
-        filename = i
-        with open(filename, 'r', newline='') as file:
+    if i.startswith("eBay-active-listing"):
+        with open(i, 'r', newline='', encoding="utf-8") as file:
             csv_rows = csv.reader(file)  # reader() function takes each
             # row (lines) into a list
             header = next(csv_rows)
             if header != None:   # Passing header row
                 for row in csv_rows:
-                    if row[10].startswith("10-") or row[10].startswith("18-"):
-                        listEBAY.append(row[10])
+                    if row[3].startswith("10-") or row[3].startswith("18-"):
+                        listEBAY.append(row[3])
 
 
 file_ODM = dname + "\mpStockFile.csv"
