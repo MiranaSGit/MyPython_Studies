@@ -8,10 +8,10 @@ file_ODM = dname + "\mpStockFile.csv"
 
 listPairs = ['18-041570', '18-042570', '18-342101', '18-341101', '18-342161',
              '18-341161', '18-213051', '18-152340', '18-151340', '18-011721',
-             '18-012721']
+             '18-012721', '18-011850', '18-012850']
 dictODM = {}
 
-tmpFile = "tmp.csv"
+tmpFile = "ODM_LWStock.csv"
 with open(file_ODM, mode='r', newline="", encoding='utf-8') as inputfile, \
         open(tmpFile, mode='w', newline="", encoding='utf-8') as outfile:
     reader = csv.reader(inputfile, delimiter=',')
@@ -49,6 +49,11 @@ with open(file_ODM, mode='r', newline="", encoding='utf-8') as inputfile, \
     if dictODM['18-011721'] < dictODM['18-012721']:
         writer.writerow(
             ['18-011721+18-012721', dictODM['18-011721'], 'MAIN_STOCK'])
+    if dictODM['18-011850'] >= dictODM['18-012850']:
+        writer.writerow(
+            ['PAIR11850-12850', dictODM['18-012850'], 'MAIN_STOCK'])
+    if dictODM['18-011850'] < dictODM['18-012850']:
+        writer.writerow(
+            ['PAIR11850-12850', dictODM['18-011850'], 'MAIN_STOCK'])
 
 os.remove('mpStockFile.csv')
-os.rename(tmpFile, 'mpStockFile.csv')
