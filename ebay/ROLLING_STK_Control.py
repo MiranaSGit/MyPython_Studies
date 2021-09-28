@@ -30,7 +30,6 @@ for i in df.index:
     else:
         pass
 
-book2 = pd.ExcelFile(file)
 
 df = pd.read_excel(book1, sheet_name='Brake Caliper')
 
@@ -44,6 +43,17 @@ for i in df.index:
     else:
         pass
 
+df = pd.read_excel(book1, sheet_name='Steering Pump')
+
+for i in df.index:
+    if df['Comment'][i] == 'In Stock':
+        rolling_inventory[df['ROLLCO'][i]] = 4
+    elif df['Comment'][i] == 'Low Stock':
+        rolling_inventory[df['ROLLCO'][i]] = 1
+    elif df['Comment'][i] == 'Out of stock':
+        rolling_inventory[df['ROLLCO'][i]] = 0
+    else:
+        pass
 
 if rolling_inventory['VSBC164L'] < rolling_inventory['VSBC164R']:
     rolling_inventory['VSBC164L+VSBC164R'] = rolling_inventory['VSBC164L']
@@ -56,9 +66,8 @@ with open('ROLLING_LW.csv', mode='w', newline="") as new_file:
     for i, j in rolling_inventory.items():
         writer.writerow([i, j, "MAIN_STOCK"])
 
-# Have to delete book files to deleted the red file as it is still in memory.
+# Have to delete book file to deleted the red file as it is still in memory.
 del book1
-del book2
 
 filename_toBeDeleted = str(dname) + "\\ROLLING STOCK LIST.xlsx"
 if os.path.isfile("ROLLING STOCK LIST.xlsx"):
