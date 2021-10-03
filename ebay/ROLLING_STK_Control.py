@@ -9,7 +9,7 @@ os.chdir(dname)
 
 
 for i in os.listdir("."):
-    if i.startswith("ROLLING"):
+    if i.startswith("ROLLING STOCK"):
         file = i
         break
 
@@ -50,7 +50,7 @@ for i in df.index:
         rolling_inventory[df['ROLLCO'][i]] = 4
     elif df['Comment'][i] == 'Low Stock':
         rolling_inventory[df['ROLLCO'][i]] = 1
-    elif df['Comment'][i] == 'Out of stock':
+    elif df['Comment'][i] == 'Out of stock' or df['Comment'][i] == 'Out of Stock':
         rolling_inventory[df['ROLLCO'][i]] = 0
     else:
         pass
