@@ -55,6 +55,18 @@ for i in df.index:
     else:
         pass
 
+df = pd.read_excel(book1, sheet_name='Wheel Hub & Bearing Kit')
+
+for i in df.index:
+    if df['Comment'][i] == 'In Stock':
+        rolling_inventory[df['ROLLCO'][i]] = 4
+    elif df['Comment'][i] == 'Low Stock':
+        rolling_inventory[df['ROLLCO'][i]] = 1
+    elif df['Comment'][i] == 'Out of stock' or df['Comment'][i] == 'Out of Stock':
+        rolling_inventory[df['ROLLCO'][i]] = 0
+    else:
+        pass
+
 if rolling_inventory['VSBC164L'] < rolling_inventory['VSBC164R']:
     rolling_inventory['VSBC164L+VSBC164R'] = rolling_inventory['VSBC164L']
 else:
